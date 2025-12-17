@@ -2,9 +2,11 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: black;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    scroll-behavior: smooth;
 }
 
 /* Style for all full-page screens */
@@ -14,21 +16,45 @@ html, body {
 #icon-screen,
 #contact-screen,
 #extra-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: contain; /* Shows the whole image */
+    background-size: cover;
     background-repeat: no-repeat; /* Prevents tiling */
-    background-color: black; /* Fills the gaps with black */
+    background-color: black; /* Fills any gaps with black */
     background-position: center;
 }
 
-/* Class to easily hide content screens */
+/* --- Backgrounds --- */
+#welcome-screen {
+    background-image: url('../imgs/toronto.jpeg');
+}
+
+#main-menu-screen {
+    background-image: url('../imgs/subway.jpeg');
+}
+
+#campaign-screen {
+    background-image: url('../imgs/wall.jpeg');
+}
+
+#icon-screen {
+    background-image: url('../imgs/alley.jpeg');
+}
+
+#extra-screen {
+    background-image: url('../imgs/wall.jpeg');
+}
+
+#contact-screen {
+    background-image: url('../imgs/wall.jpeg');
+}
+
+/* Class to easily hide screens */
 .hidden {
     display: none !important;
 }
@@ -46,30 +72,31 @@ html, body {
     }
 }
 
-
-/* --- Backgrounds --- */
-#welcome-screen {
-    background-image: url('../imgs/toronto.jpeg');
+/* --- Flash Overlay --- */
+#flash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: 9999; /* Higher than all other elements */
+    transition: opacity 0.25s ease-out;
+    pointer-events: none;
 }
 
-#main-menu-screen {
-    background-image: url('../imgs/wall.jpeg');
-}
+#welcome-screen img {
+    /* Positioning logic */
+    position: absolute;
+    top: 0; /* Distance from the top of the screen */
+    left: 50%;
+    transform: translateX(-50%); /* Perfectly centers it horizontally */
 
-#campaign-screen {
-    background-image: url('../imgs/wall.jpeg');
-}
-
-#icon-screen {
-    background-image: url('../imgs/alley.jpeg');
-}
-
-#extra-screen {
-    background-image: url('../imgs/subway.jpeg');
-}
-
-#contact-screen {
-    background-image: url('../imgs/wall.jpeg');
+    /* Sizing logic */
+    width: 25%;
+    height: auto; /* Changed from 50% to auto to keep the logo from stretching */
+    max-height: 300px; /* Prevents it from getting too huge on big screens */
 }
 
 /* --- Button Styling --- */
@@ -83,88 +110,63 @@ html, body {
     animation: flashing 2s infinite;
 }
 
-/* --- Flash Overlay --- */
-#flash-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0;
-    z-index: 1000;
-    transition: opacity 0.25s ease-out;
-    pointer-events: none;
+#copyright {
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
 }
 
-/* Container for the menu */
+
 #nav-menu {
-    width: 100%;
+    width: 75%;
 }
 
-/* Remove default list styling */
 #nav-menu ul {
     list-style: none;
-    padding-left: 300px;
-    margin: 0;
+    padding-left: 40px;
     display: flex;
     flex-direction: column;
     align-items: normal;
-    gap: 30px;
 }
 
-/* Style links */
 #nav-menu ul li a {
     text-decoration: none;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 4px;
     transition: all 0.3s ease;
     position: relative;
     opacity: 0.8;
 }
 
-/* Text brightens and expands slightly */
 #nav-menu ul li a:hover {
     opacity: 1;
-    letter-spacing: 6px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
-/* Add a line under the link */
-#nav-menu ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-#nav-menu ul li a:hover::after {
-    width: 100%;
+#nav-menu img {
+    width: 25%;
+    height: auto;
+    max-height: 150px;
 }
 
 .back-btn {
     background: transparent;
     border: none;
+    text-decoration: none;
     cursor: pointer;
-    color: white;
 
     /* --- Positioning Logic --- */
     position: absolute;
-    top: 20px;
-    left: 300px;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
 
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    z-index: 10; /* keep it above background elements */
+.back-btn img {
+    width: auto;
+    height: auto;
+    max-height: 100px;
 }
 
 /* Add a hover effect so users know it's clickable */
