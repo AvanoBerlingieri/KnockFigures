@@ -1,0 +1,174 @@
+/* --- Global Reset & Full-Screen Setup --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Style for all full-page screens */
+#welcome-screen,
+#main-menu-screen,
+#campaign-screen,
+#icon-screen,
+#contact-screen,
+#extra-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain; /* Shows the whole image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-color: black; /* Fills the gaps with black */
+    background-position: center;
+}
+
+/* Class to easily hide content screens */
+.hidden {
+    display: none !important;
+}
+
+/* --- Animation --- */
+@keyframes flashing {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* --- Backgrounds --- */
+#welcome-screen {
+    background-image: url('../imgs/toronto.jpeg');
+}
+
+#main-menu-screen {
+    background-image: url('../imgs/wall.jpeg');
+}
+
+#campaign-screen {
+    background-image: url('../imgs/wall.jpeg');
+}
+
+#icon-screen {
+    background-image: url('../imgs/alley.jpeg');
+}
+
+#extra-screen {
+    background-image: url('../imgs/subway.jpeg');
+}
+
+#contact-screen {
+    background-image: url('../imgs/wall.jpeg');
+}
+
+/* --- Button Styling --- */
+#enter-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    animation: flashing 2s infinite;
+}
+
+/* --- Flash Overlay --- */
+#flash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity 0.25s ease-out;
+    pointer-events: none;
+}
+
+/* Container for the menu */
+#nav-menu {
+    width: 100%;
+}
+
+/* Remove default list styling */
+#nav-menu ul {
+    list-style: none;
+    padding-left: 300px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    gap: 30px;
+}
+
+/* Style links */
+#nav-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0.8;
+}
+
+/* Text brightens and expands slightly */
+#nav-menu ul li a:hover {
+    opacity: 1;
+    letter-spacing: 6px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* Add a line under the link */
+#nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+#nav-menu ul li a:hover::after {
+    width: 100%;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+
+    /* --- Positioning Logic --- */
+    position: absolute;
+    top: 20px;
+    left: 300px;
+
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10; /* keep it above background elements */
+}
+
+/* Add a hover effect so users know it's clickable */
+.back-btn:hover {
+    color: grey;
+    text-decoration: underline;
+}
