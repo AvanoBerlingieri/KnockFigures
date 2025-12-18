@@ -43,7 +43,7 @@ html, body {
 }
 
 #icon-screen {
-    background-image: url('../imgs/alley.jpeg');
+    background-image: url('../imgs/torontoFence.jpeg');
 }
 
 #extra-screen {
@@ -94,9 +94,9 @@ html, body {
     transform: translateX(-50%); /* Perfectly centers it horizontally */
 
     /* Sizing logic */
-    width: 25%;
-    height: auto; /* Changed from 50% to auto to keep the logo from stretching */
-    max-height: 300px; /* Prevents it from getting too huge on big screens */
+    width: 20%;
+    height: auto;
+    max-height: 350px;
 }
 
 /* --- Button Styling --- */
@@ -120,23 +120,40 @@ html, body {
     margin: 0;
 }
 
+.menuTitle {
+    background-color: transparent;
+    border: none;
+    width: 35%;
+    height: auto;
+    max-height: 200px;
+    position: absolute;
+    top: 0;
+    left: 100px;
+}
 
 #nav-menu {
-    width: 75%;
+    width: 80%;
 }
 
 #nav-menu ul {
     list-style: none;
-    padding-left: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: normal;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    gap: 10px;
+    justify-content: start;
+}
+
+#nav-menu img {
+    /* Set a fixed width or use 100% of the grid cell */
+    width: 200px;
+    height: auto;
+    display: block;
 }
 
 #nav-menu ul li a {
     text-decoration: none;
     transition: all 0.3s ease;
-    position: relative;
     opacity: 0.8;
 }
 
@@ -144,17 +161,13 @@ html, body {
     opacity: 1;
 }
 
-#nav-menu img {
-    width: 25%;
-    height: auto;
-    max-height: 150px;
-}
-
 .back-btn {
     background: transparent;
     border: none;
     text-decoration: none;
     cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.3s ease;
 
     /* --- Positioning Logic --- */
     position: absolute;
@@ -163,14 +176,12 @@ html, body {
     z-index: 10;
 }
 
+.back-btn:hover {
+    opacity: 1;
+}
+
 .back-btn img {
     width: auto;
     height: auto;
     max-height: 100px;
-}
-
-/* Add a hover effect so users know it's clickable */
-.back-btn:hover {
-    color: grey;
-    text-decoration: underline;
 }
