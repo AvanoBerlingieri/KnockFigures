@@ -39,7 +39,7 @@ html, body {
 }
 
 #campaign-screen {
-    background-image: url('../imgs/wall.jpeg');
+    background-image: url('../imgs/campaignPage.jpeg');
 }
 
 #icon-screen {
@@ -51,7 +51,7 @@ html, body {
 }
 
 #contact-screen {
-    background-image: url('../imgs/wall.jpeg');
+    background-image: url('../imgs/contactPage.jpeg');
 }
 
 /* Class to easily hide screens */
@@ -87,13 +87,11 @@ html, body {
 }
 
 #welcome-screen img {
-    /* Positioning logic */
     position: absolute;
-    top: 0; /* Distance from the top of the screen */
+    top: 0;
     left: 50%;
-    transform: translateX(-50%); /* Perfectly centers it horizontally */
+    transform: translateX(-50%); /* centers it horizontally */
 
-    /* Sizing logic */
     width: 20%;
     height: auto;
     max-height: 350px;
@@ -145,7 +143,6 @@ html, body {
 }
 
 #nav-menu img {
-    /* Set a fixed width or use 100% of the grid cell */
     width: 200px;
     height: auto;
     display: block;
@@ -169,7 +166,6 @@ html, body {
     opacity: 0.8;
     transition: all 0.3s ease;
 
-    /* --- Positioning Logic --- */
     position: absolute;
     top: 0;
     left: 0;
